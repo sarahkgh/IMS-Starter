@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.qa.ims.persistence.domain.Customer;
+import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.utils.DBUtils;
 
@@ -29,8 +30,13 @@ public class OrderDAO implements Dao<Order> {
 		String surname = resultSet.getString("surname");
 		Customer customer = new Customer(id, firstName, surname);
 		
+		Long itemId = resultSet.getLong("itemId");
+		String itemName = resultSet.getString("itemName");
+		Long itemValue = resultSet.getLong("itemValue");
+		Item item = new Item(itemId, itemName, itemValue);
+		
 		Long orderQuantity = resultSet.getLong("orderQuantity");
-		return new Order(orderId, customer, orderQuantity);
+		return new Order(orderId, customer, orderQuantity, item);
 	}
 
 	@Override
@@ -129,5 +135,35 @@ public class OrderDAO implements Dao<Order> {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public Order addItem(Order order) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection.prepareStatement("INSERT INTO orderitems(orderId, itemId) VALUES (?, ?)");) {
+			statement.setLong(1, order.getOrderId());
+			statement.setLong(2, order.getItem().getItemId());
+			statement.executeUpdate();
+			return readLatest();
+		} catch(Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
+	
+	public Order removeItem(Order order) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection.prepareStatement("DELETE FROM orderitems WHERE orderId = ? AND itemID = ?;");) {
+			statement.setLong(1, order.getOrderId());
+			statement.setLong(2, order.getItem().getItemId());
+			statement.executeUpdate();
+			return readLatest();
+		} catch(Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
+	
+	
 
 }

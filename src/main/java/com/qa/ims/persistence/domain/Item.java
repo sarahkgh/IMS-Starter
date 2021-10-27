@@ -17,6 +17,17 @@ public class Item {
 		this.setItemName(itemName);
 		this.setItemValue(itemValue);
 	}
+	
+	
+
+	public Item(Long itemId) {
+		super();
+		this.itemId = itemId;
+	}
+
+	public Item() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Long getItemId() {
 		return itemId;

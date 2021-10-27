@@ -80,7 +80,7 @@ public class ItemDAO implements Dao<Item> {
 				PreparedStatement statement = connection
 						.prepareStatement("INSERT INTO items(itemName, itemValue) VALUE (?, ?)");) {
 			statement.setString(1, item.getItemName());
-			statement.setLong(10, item.getItemValue());
+			statement.setLong(2, item.getItemValue());
 			statement.executeUpdate();
 			return readLatest();
 		} catch (Exception e) {
