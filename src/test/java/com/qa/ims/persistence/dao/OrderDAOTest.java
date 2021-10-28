@@ -21,7 +21,7 @@ public class OrderDAOTest {
 
 	{
 		DBUtils.connect();
-		DBUtils.getInstance().init("srs/test/resources/sql-schema.sql", "srs/test/resources/sql-data.sql");
+		DBUtils.getInstance().init("src/test/resources/sql-schema.sql", "src/test/resources/sql-data.sql");
 
 	}
 

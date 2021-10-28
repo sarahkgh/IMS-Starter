@@ -20,14 +20,14 @@ public class ItemDAOTest {
 
 	{
 		DBUtils.connect();
-		DBUtils.getInstance().init("srs/test/resources/sql-schema.sql", "srs/test/resources/sql-data.sql");
+		DBUtils.getInstance().init("src/test/resources/sql-schema.sql", "src/test/resources/sql-data.sql");
 
 	}
 
 	@Test
 	public void  testCreate() {
 
-		final Item created = new Item(1l, "Handbag", 10l);
+		final Item created = new Item(2l, "Handbag", 10l);
 
 		assertEquals(created, DAO.create(created));
 	}
@@ -35,20 +35,20 @@ public class ItemDAOTest {
 	@Test
 	public void testReadAll() {
 		List<Item> expected = new ArrayList<Item>();
-		expected.add(new Item(2l, "Scarf", 8l));
+		expected.add(new Item(1l, "handbag", 12l));
 		assertEquals(expected, DAO.readAll());
 	}
 
 	@Test
 	public void testReadLatest() {
-		assertEquals(new Item(2l, "Scarf", 8l), DAO.readLatest());
+		assertEquals(new Item(1l, "handbag", 12l), DAO.readLatest());
 
 	}
 
 	@Test
 	public void testRead() {
 		final long itemId = 1l;
-		assertEquals(new Item(1l, "Scarf", 8l), DAO.read(itemId));
+		assertEquals(new Item(1l, "handbag", 12l), DAO.read(itemId));
 	}
 
 	@Test

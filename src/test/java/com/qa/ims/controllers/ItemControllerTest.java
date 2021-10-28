@@ -52,15 +52,15 @@ public class ItemControllerTest {
 
 	@Test
 	public void testUpdate() {
-		Item updated = new Item(3l, "purse", 8l);
-		Mockito.when(this.utils.getLong()).thenReturn(3l);
+		Item updated = new Item(1l, "purse", 8l);
+		Mockito.when(this.utils.getLong()).thenReturn(1l, updated.getItemValue());
 		Mockito.when(this.utils.getString()).thenReturn(updated.getItemName());
-		Mockito.when(this.utils.getLong()).thenReturn(updated.getItemValue());
+		
 		Mockito.when(this.dao.update(updated)).thenReturn(updated);
 
 		assertEquals(updated, this.controller.update());
 
-		Mockito.verify(this.utils, Mockito.times(1)).getLong();
+		Mockito.verify(this.utils, Mockito.times(2)).getLong();
 		Mockito.verify(this.utils, Mockito.times(1)).getString();
 
 		Mockito.verify(this.dao, Mockito.times(1)).update(updated);

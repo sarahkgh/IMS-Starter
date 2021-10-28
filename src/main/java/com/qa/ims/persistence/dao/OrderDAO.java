@@ -91,7 +91,7 @@ public class OrderDAO implements Dao<Order> {
 	public Order create(Order order) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("INSERT INTO orders(id) VALUE (?)");) {
+						.prepareStatement("INSERT INTO orders(id) VALUES (?)");) {
 
 			statement.setLong(1, order.getCustomer().getId());
 			statement.executeUpdate();
@@ -163,6 +163,11 @@ public class OrderDAO implements Dao<Order> {
 		}
 		return null;
 	}
+	
+//	public Order calculateCost(Order order) {
+//		System.out.println("Please enter the ");
+//	}
+//	
 	
 	
 

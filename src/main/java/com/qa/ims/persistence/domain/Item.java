@@ -60,7 +60,12 @@ public class Item {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(itemId, itemName, itemValue);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
+		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
+		result = prime * result + ((itemValue == null) ? 0 : itemValue.hashCode());
+		return result;
 	}
 
 	@Override
@@ -72,8 +77,24 @@ public class Item {
 		if (getClass() != obj.getClass())
 			return false;
 		Item other = (Item) obj;
-		return Objects.equals(itemId, other.itemId) && Objects.equals(itemName, other.itemName)
-				&& Objects.equals(itemValue, other.itemValue);
+		if (itemId == null) {
+			if (other.itemId != null)
+				return false;
+		} else if (!itemId.equals(other.itemId))
+			return false;
+		if (itemName == null) {
+			if (other.itemName != null)
+				return false;
+		} else if (!itemName.equals(other.itemName))
+			return false;
+		if (itemValue == null) {
+			if (other.itemValue != null)
+				return false;
+		} else if (!itemValue.equals(other.itemValue))
+			return false;
+		return true;
 	}
+
+	
 
 }
