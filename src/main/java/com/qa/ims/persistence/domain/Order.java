@@ -21,6 +21,12 @@ public class Order {
 	}
 
 	
+	public Order(Customer customer, long orderQuantity) {
+		super();
+		this.customer = customer;
+		this.orderQuantity = orderQuantity;
+	}
+
 	public Order(long orderId, Item item) {
 		super();
 		this.orderId = orderId;

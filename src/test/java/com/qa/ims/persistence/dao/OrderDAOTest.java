@@ -37,8 +37,8 @@ public class OrderDAOTest {
 	public void testReadAll() {
 		Customer customer = new Customer(2l, "John", "Smith");
 		Item item = new Item(1l, "Bag", 3l);
-		List<Order> expected = new ArrayList<>();
-		expected.add(new Order(3l, customer, 4l, item));
+		List<Order> expected = new ArrayList<Order>();
+		expected.add(new Order(1l, customer, 3l, item));
 		assertEquals(expected, DAO.readAll());
 	}
 

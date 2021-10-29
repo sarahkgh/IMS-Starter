@@ -91,9 +91,10 @@ public class OrderDAO implements Dao<Order> {
 	public Order create(Order order) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("INSERT INTO orders(id) VALUES (?)");) {
+						.prepareStatement("INSERT INTO orders(id, orderQuantity) VALUES (?, ?)");) {
 
 			statement.setLong(1, order.getCustomer().getId());
+			statement.setLong(2, order.getOrderQuantity());
 			statement.executeUpdate();
 			return readLatest();
 		} catch (Exception e) {

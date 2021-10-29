@@ -25,6 +25,7 @@ public class OrderControllerTest {
 	private Utils utils;
 	@Mock
 	OrderDAO dao;
+	
 	@InjectMocks
 	private OrderController controller;
 
@@ -65,7 +66,7 @@ public class OrderControllerTest {
 		
 		assertEquals(updated, this.controller.update());
 		
-		Mockito.verify(this.utils, Mockito.times(3)).getLong();
+		Mockito.verify(this.utils, Mockito.times(4)).getLong();
 		Mockito.verify(this.dao, Mockito.times(1)).update(updated);
 	}
 	
