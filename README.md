@@ -9,7 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+What things you need to install the software
 
 -Eclipse IDE. This software can be installed from the Eclipse website.
 -MySQL Workbench. This software can be installed from the MySQL website.
@@ -41,11 +41,11 @@ This tests connections and more of the database as opposed to unit tests which o
 
 ### And coding style tests
 
-This refers to the coding standards and how
+This refers to the coding standards and how the code is supposed to be laid out in a test for it to run.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Ensuring that this is a Maven project so that it can link to other databases and can use JUnit testing.
 
 ## Built With
 
@@ -57,7 +57,7 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
-* **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
+* **Sarah Khan** - *Initial work* - [Sarah Khan](https://github.com/sarahkgh)
 
 ## License
 
