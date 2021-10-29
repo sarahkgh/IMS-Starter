@@ -1,5 +1,5 @@
-Coverage: 34%
-# Project Title
+Coverage: 71%
+# IMS Starter Project
 
 One Paragraph of project description goes here
 
